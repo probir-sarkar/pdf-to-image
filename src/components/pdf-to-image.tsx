@@ -44,15 +44,13 @@ export default function PdfToImage() {
       setError("Please select a PDF file.");
       return;
     }
-    setError(null);
-    setImages([]);
-    setStartPage(1);
-    setEndPage(null);
+    clear();
     getFileInfo(f).then((info) => setFileInfo(info));
   }, []);
 
   async function convert() {
     if (!fileInfo) return;
+    setConverting(true);
     const images = await pdfToImagesBrowser(fileInfo.file, {
       format: format === "png" ? "image/png" : "image/jpeg",
       scale,
@@ -61,6 +59,15 @@ export default function PdfToImage() {
       quality,
     });
     setImages(images);
+    setConverting(false);
+  }
+
+  function clear() {
+    setFileInfo(null);
+    setError(null);
+    setImages([]);
+    setStartPage(1);
+    setEndPage(null);
   }
   return (
     <div className="flex flex-col gap-6">
@@ -75,7 +82,7 @@ export default function PdfToImage() {
               name={fileInfo.name}
               size={fileInfo.size}
               pages={fileInfo.pages}
-              onClear={() => setFileInfo(null)}
+              onClear={clear}
             />
           )}
 
@@ -184,7 +191,6 @@ export default function PdfToImage() {
             <div className="space-y-2">
               <Label className="opacity-0">Download</Label>
               <Button
-                variant="secondary"
                 onClick={() => downloadAll(images)}
                 disabled={!images.length}
                 className="w-full"
