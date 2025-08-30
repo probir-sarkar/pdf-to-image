@@ -8,7 +8,7 @@ Features
 - Accessible, mobile-first UI (shadcn/ui + Tailwind)
 
 Tech
-- Next.js App Router (runs fully client-side)
+- React + Vite
 - pdfjs-dist (ESM, worker disabled for simplicity/offline)
 - JSZip for ZIP export
 

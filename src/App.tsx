@@ -2,16 +2,9 @@ import { Suspense } from "react";
 import { Github } from "lucide-react";
 import PdfToImage from "@/components/pdf-to-image";
 import { Button } from "@/components/ui/button";
-import { Hero } from "@/components/hero";
 import { TrustBar } from "@/components/trust-bar";
 import { HowItWorks } from "@/components/how-it-works";
 import { FAQ } from "@/components/faq";
-
-export const metadata = {
-  title: "Open PDF → Image | Offline, Private PDF to Image Converter",
-  description:
-    "Convert PDF pages to PNG/JPEG entirely in your browser. Offline-first, no uploads, no tracking. Open source and MIT licensed.",
-};
 
 export default function HomePage() {
   return (
@@ -31,7 +24,7 @@ export default function HomePage() {
               </Button>
               <Button asChild variant="default">
                 <a
-                  href="https://github.com/"
+                  href="https://github.com/probir-sarkar/pdf-to-image"
                   target="_blank"
                   rel="noreferrer"
                   aria-label="Open GitHub repository"
