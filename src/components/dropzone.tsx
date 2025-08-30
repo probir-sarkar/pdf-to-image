@@ -2,6 +2,7 @@
 
 import React, { useCallback, useRef, useState } from "react";
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 
 type Props = {
   onFiles: (files: FileList | File[]) => void;
@@ -31,10 +32,10 @@ export default function Dropzone({ onFiles }: Props) {
       }}
       onDragLeave={() => setIsOver(false)}
       onDrop={onDrop}
-      className={[
+      className={cn(
         "rounded-md border p-8 transition",
-        isOver ? "border-primary/60 bg-primary/5" : "border-muted bg-card",
-      ].join(" ")}
+        isOver ? "border-primary/60 bg-primary/5" : "border-muted bg-card"
+      )}
       role="region"
       aria-label="Upload PDF area"
     >

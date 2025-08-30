@@ -14,13 +14,16 @@ import { Input } from "@/components/ui/input";
 import { Progress } from "@/components/ui/progress";
 import {
   downloadAll,
+  getFileInfo,
   pdfToImagesBrowser,
   triggerDownload,
+  type FileInfo,
   type ImageResult,
 } from "@/lib/pdfToImage";
+import { FileCard } from "./file-card";
 
 export default function PdfToImage() {
-  const [file, setFile] = useState<File | null>(null);
+  const [fileInfo, setFileInfo] = useState<FileInfo | null>(null);
   const [format, setFormat] = useState<"png" | "jpeg">("png");
   const [quality, setQuality] = useState<number>(92); // for jpeg
   const [scale, setScale] = useState<number>(2.0); // 2x scale by default
@@ -43,14 +46,14 @@ export default function PdfToImage() {
     }
     setError(null);
     setImages([]);
-    setFile(f);
     setStartPage(1);
     setEndPage(null);
+    getFileInfo(f).then((info) => setFileInfo(info));
   }, []);
 
   async function convert() {
-    if (!file) return;
-    const images = await pdfToImagesBrowser(file, {
+    if (!fileInfo) return;
+    const images = await pdfToImagesBrowser(fileInfo.file, {
       format: format === "png" ? "image/png" : "image/jpeg",
       scale,
       startPage,
@@ -67,6 +70,14 @@ export default function PdfToImage() {
         </CardHeader>
         <CardContent className="flex flex-col gap-6">
           <Dropzone onFiles={onFiles} />
+          {fileInfo && (
+            <FileCard
+              name={fileInfo.name}
+              size={fileInfo.size}
+              pages={fileInfo.pages}
+              onClear={() => setFileInfo(null)}
+            />
+          )}
 
           <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
             <div className="space-y-2">
@@ -164,7 +175,7 @@ export default function PdfToImage() {
               <Label className="opacity-0">Convert</Label>
               <Button
                 onClick={convert}
-                disabled={!file || converting}
+                disabled={!fileInfo || converting}
                 className="w-full"
               >
                 {converting ? "Converting…" : "Convert"}

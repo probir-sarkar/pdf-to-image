@@ -115,3 +115,29 @@ export async function downloadAll(images: ImageResult[]) {
     triggerDownload(blob, `${baseName}-images.zip`);
   }
 }
+
+export interface FileInfo {
+  name: string;
+  size: string;
+  pages: number;
+  file: File;
+}
+export async function getFileInfo(file: File): Promise<FileInfo> {
+  const name = file.name;
+  const size = `${(file.size / 1024 / 1024).toFixed(2)} MB`;
+
+  let pages = 0;
+
+  if (file.type === "application/pdf") {
+    const arrayBuffer = await file.arrayBuffer();
+    const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+    pages = pdf.numPages;
+  }
+
+  return {
+    name,
+    size,
+    pages,
+    file,
+  };
+}
