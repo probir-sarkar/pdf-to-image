@@ -21,7 +21,6 @@ Development
 
 License
 - MIT — see LICENSE
-\`\`\`
 
 ```text file="LICENSE"
 MIT License
