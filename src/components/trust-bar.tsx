@@ -8,7 +8,7 @@ type Props = { className?: string }
 const items = [
   { icon: ShieldCheck, label: "100% offline" },
   { icon: Lock, label: "No uploads, no tracking" },
-  { icon: Zap, label: "Fast in-browser rendering" },
+  { icon: Zap, label: "In-browser rendering" },
   { icon: Github, label: "Open source (MIT)" },
 ]
 
