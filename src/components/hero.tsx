@@ -15,7 +15,7 @@ export function Hero() {
           <Button asChild>
             <a href="#converter">Convert a PDF</a>
           </Button>
-          <Button asChild variant="outline">
+          <Button asChild variant="outline" className="hidden md:block">
             <a href="#how-it-works" aria-label="Learn how conversion works">
               Learn how it works
             </a>

@@ -19,7 +19,7 @@ export default function HomePage() {
               <span className="sr-only">Home</span>
             </a>
             <div className="flex items-center gap-2">
-              <Button asChild variant="ghost">
+              <Button asChild variant="ghost" className="hidden md:block">
                 <a href="#how-it-works">How it works</a>
               </Button>
               <Button asChild variant="default">
@@ -49,7 +49,7 @@ export default function HomePage() {
             offline, fast, and free. Trusted by privacy-conscious teams and
             individuals.
           </p>
-          <TrustBar className=" w-8/12 mx-auto" />
+          <TrustBar className="  mx-auto" />
         </div>
         <Suspense
           fallback={

@@ -57,7 +57,10 @@ export default function Dropzone({ onFiles }: Props) {
             accept="application/pdf"
             className="hidden"
             onChange={(e) => {
-              if (e.target.files?.length) onFiles(e.target.files);
+              if (e.target.files?.length) {
+                onFiles(e.target.files);
+                e.target.value = "";
+              }
             }}
           />
         </div>
