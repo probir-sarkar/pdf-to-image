@@ -14,7 +14,7 @@ const items = [
 
 export function TrustBar({ className }: Props) {
   return (
-    <div className={cn("w-full md:w-8/12 rounded-lg border bg-card px-4 py-3", className)}>
+    <div className={cn("w-full md:w-8/12 rounded-lg border bg-card px-2 py-2 md:px-4 md:py-3", className)}>
       <ul className="grid grid-cols-2 md:flex flex-wrap justify-around items-center text-xs text-muted-foreground gap-y-3 md:gap-6">
         {items.map((item) => (
           <li key={item.label} className="flex items-center gap-1 md:gap-2">
