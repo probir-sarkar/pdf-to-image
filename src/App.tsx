@@ -74,7 +74,7 @@ export default function HomePage() {
             Built for privacy. 100% offline, no tracking, MIT Licensed.{" "}
             <a
               className="underline hover:text-foreground"
-              href="https://github.com/"
+              href="https://github.com/probir-sarkar/pdf-to-image"
               target="_blank"
               rel="noreferrer"
             >
