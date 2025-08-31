@@ -17,8 +17,9 @@ export default defineConfig({
       manifest: {
         name: "PDF to Image Converter",
         short_name: "PDF to Image",
-        description: "⚡ Offline-first PDF to Image Converter. 100% client-side, secure, and open source.",
-        theme_color: "#ffffff",
+        description:
+          "⚡ Offline-first PDF to Image Converter. 100% client-side, secure, and open source.",
+        theme_color: "#3b82f6",
         icons: [
           {
             src: "/android-chrome-192x192.png",
@@ -31,7 +32,7 @@ export default defineConfig({
             type: "image/png",
           },
         ],
-      }
+      },
     }),
   ],
   resolve: {
